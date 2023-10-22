@@ -1,95 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <%- include('layouts/header'); -%>
+<%- include('layouts/header'); -%>
+
     <body>
         <!-- Navigation-->
         <%- include('layouts/navbar'); -%>
-        <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="site-heading">
-                            <h2>The Tax GAAP</h2>
-                            <span class="subheading">There's Power in Numbers</span>
-                            <div></div>
-                            <span class="subheading">Research ... Post ... Answer</span>
-                            <div></div>
+            <!-- Page Header-->
+            <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="site-heading">
+
+                                <span class="subheading">There's Power in Numbers</span>
+                                <div></div>
+                                <span class="subheading">Research ... Post ... Answer</span>
+                                <br>
+                                <button class="btn btn-primary video-btn" data-bs-toggle="modal"
+                                    data-src="https://www.youtube.com/embed/NFWSFbqL0A0"
+                                    data-bs-target="#demo-modal">Product Demo</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </header>
-                                
-        <!-- Main Content-->
-        <div class="container px-4 px-lg-5">
+            </header>
 
-            <div class="row gx-4 gx-lg-5 justify-content-center">
+            <!-- Main Content-->
+            <div class="container px-4 px-lg-5">
 
-                <!-- CHIRON -->
-                <div class="hwrap">
-                    <div class="hmove">
-                        <div class="hitem">Post Good Questions </div>
-                        <div class="hitem">And Correct Answers</div>
-                        <div class="hitem">Increase Your Rank...</div>
-                        <div class="hitem"><strong>Total Posts As Of Today: </strong> <%= numQuestions %></div>
-                        <div class="hitem"><strong>Total Users As Of Today: </strong><%= numUsers %></div>      
-                        <div class="hitem">Top Ranked Users:</div>
-                        <div class="hitem"><strong><%= allUsers[0].username %>'s   Points:</strong> <%= allUsers[0].rank %></div>      
-                        <div class="hitem"><strong><%= allUsers[1].username %>'s   Points:</strong> <%= allUsers[1].rank %></div>
-                        <div class="hitem"><strong><%= allUsers[2].username %>'s   Points:</strong> <%= allUsers[2].rank %></div>
-                        <div class="hitem"><strong><%= allUsers[3].username %>'s   Points:</strong> <%= allUsers[3].rank %></div>
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+
+                    <!-- CHIRON -->
+                    <div class="hwrap">
+                        <div class="hmove">
+                            <div class="hitem">Post Good Questions </div>
+                            <div class="hitem">And Correct Answers</div>
+                            <div class="hitem">Increase Your Rank...</div>
+                            <div class="hitem"><strong>Total Posts As Of Today: </strong>
+                                <%= numQuestions %>
+                            </div>
+                            <div class="hitem"><strong>Total Users As Of Today: </strong>
+                                <%= numUsers %>
+                            </div>
+                            <div class="hitem">Top Ranked Users:</div>
+                            <% for (let i=0; i < Math.min(allUsers.length, 4); i++) { %>
+                                <div class="hitem"><strong>
+                                        <%= allUsers[i].username %>'s Points:
+                                    </strong>
+                                    <%= allUsers[i].rank %>
+                                </div>
+                                <% } %>
+                        </div>
                     </div>
-                </div>
-                <!-- END CHIRON -->  
-                <div style="display: flex; flex-direction: row; gap: 2vw;">
-                    <div>
-                        <h2>Product Demo</h2>
-                        <video controls width="100%"><source src="/assets/video/TTG%20Video.mp4" type="video/mp4" /></video>
-                    </div>
-                    <!-- Main Carousel -->       
+                    <!-- END CHIRON -->
+                    <!-- Main Carousel -->
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <h2>Most Recent Questions</h2>
                         <!-- Post preview-->
-                        <% 
-                        var max = questions.length;
-                        var min = -1;
-                        let index = max-1;
-                        if (max > 3) {
+                        <% var max=questions.length; var min=-1; let index=max-1; if (max> 3) {
                             min = max - 4;
-                        } else {
+                            } else {
                             min = -1;
-                        }
-                        for (var i = index; i > min; i--) { 
-                        %>
-                        <div class="post-preview">
-                            <h3 class="post-title" style="color:dodgerblue">
-                                <%= questions[i].title %>
-                            </h3>
-                            <p class="post-subtitle">
-                            <!-- CAUTION: The = escapes the HTML in the Buffer but - does not! -->
-                            <%- questions[i].body.replace('\"', "") %>
-                            </p>
+                            }
+                            for (var i = index; i > min; i--) {
+                            %>
+                            <div class="post-preview">
+                                <h3 class="post-title" style="color:dodgerblue">
+                                    <%= questions[i].title %>
+                                </h3>
+                                <p class="post-subtitle">
+                                    <!-- CAUTION: The = escapes the HTML in the Buffer but - does not! -->
+                                    <%- questions[i].body.replace('\"', "" ) %>
+                                </p>
 
-                            <p class="post-meta">
-                                Posted by:
-                                <a><%= questions[i].userid.username %></a>
-                                on <%= questions[i].datePosted.toDateString() %>
-                            </p>
-                        </div>
-                        <% } %>
-                        <!-- Divider-->
-                        <hr class="my-4" />
-                        <!-- Pager-->
-                        <div class="d-flex justify-content-end mb-4">Click the Research Tab Above to Search Previous Questions and Answers</div>
+                                <p class="post-meta">
+                                    Posted by:
+                                    <a>
+                                        <%= questions[i].userid?.username %>
+                                    </a>
+                                    on <%= questions[i].datePosted.toDateString() %>
+                                </p>
+                            </div>
+                            <% } %>
+                                <!-- Divider-->
+                                <hr class="my-4" />
+                                <!-- Pager-->
+                                <div class="d-flex justify-content-end mb-4">Click the Research Tab Above to Search
+                                    Previous Questions and Answers</div>
                     </div>
                 </div>
             </div>
-        </div>   
-        <!-- Footer-->
-        <%- include('layouts/footer'); -%>
-        <!-- Scripts-->
-        <%- include('layouts/scripts'); -%>
+            <!-- Footer-->
+            <%- include('layouts/footer'); -%>
+                <!-- Scripts-->
+                <%- include('layouts/scripts'); -%>
+                    <div class="modal fade" id="demo-modal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <!-- 16:9 aspect ratio -->
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <video id="demo-modal-video" controls="" width="100%">
+                                            <source src="/assets/video/TTG%20Video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
     </body>
+
 </html>

@@ -1,43 +1,63 @@
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Tax Question and Answer Site" />
-    <meta name="keywords" content="Tax, Subpart, Section, IRC, Pillar, OECD">
-    <meta name="author" content="John D. McDonald" />
-    <!--<link rel="icon" type="image/x-icon" href="https://thetaxgaap/public/assets/favicon.ico" /> -->
-    <title>The Tax GAAP</title>
-    <% if(locals.createPost && createPost) {%>
-      <!--  This comes straight from the code I downloaded from summernote website -->
-      <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Tax Question and Answer Site" />
+  <meta name="keywords" content="Tax, Subpart, Section, IRC, Pillar, OECD">
+  <meta name="author" content="John D. McDonald" />
+  <!--<link rel="icon" type="image/x-icon" href="https://thetaxgaap/public/assets/favicon.ico" /> -->
+  <title>The Tax GAAP</title>
+  <% if(locals.createPost && createPost) {%>
+    <!--  This comes straight from the code I downloaded from summernote website -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <!--  End of summernote code. -->
+    <% } %>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-      <!--  End of summernote code. -->
-    <% } %>    
-    
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/styles.css" rel="stylesheet" />
 
-    <!-- These Are Solely for the Favicon.ico and pulled from favicon.io -->
-    <!-- Note that various files were added to root to support same -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <!-- End Favico.io links -->
+      <!-- Font Awesome icons (free version)-->
+      <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+      <!-- Google fonts-->
+      <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+      <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+        rel="stylesheet" type="text/css" />
+      <!-- Core theme CSS (includes Bootstrap)-->
+      <link href="/css/styles.css" rel="stylesheet" />
 
+      <!-- These Are Solely for the Favicon.ico and pulled from favicon.io -->
+      <!-- Note that various files were added to root to support same -->
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/site.webmanifest">
+      <!-- End Favico.io links -->
+      <script>
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+          document.getElementById('demo-modal').addEventListener('shown.bs.modal', function (e) {
+            document.getElementById("demo-modal-video").play();
+          })
+
+          document.getElementById('demo-modal').addEventListener('hide.bs.modal', function (e) {
+            /**
+            * @type {HTMLMediaElement}
+            */
+            let video = document.getElementById("demo-modal-video");
+            video.pause();
+            video.currentTime = 0;
+          })
+        });
+      </script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-74VC5QTGBP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
 
   gtag('config', 'G-74VC5QTGBP');
